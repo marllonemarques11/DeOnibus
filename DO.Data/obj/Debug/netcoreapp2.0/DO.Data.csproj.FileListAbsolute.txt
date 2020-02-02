@@ -1,0 +1,9 @@
+C:\Users\marll\source\repos\DeOnibus\DO.Data\bin\Debug\netcoreapp2.0\DO.Data.deps.json
+C:\Users\marll\source\repos\DeOnibus\DO.Data\bin\Debug\netcoreapp2.0\DO.Data.dll
+C:\Users\marll\source\repos\DeOnibus\DO.Data\bin\Debug\netcoreapp2.0\DO.Data.pdb
+C:\Users\marll\source\repos\DeOnibus\DO.Data\obj\Debug\netcoreapp2.0\DO.Data.csprojAssemblyReference.cache
+C:\Users\marll\source\repos\DeOnibus\DO.Data\obj\Debug\netcoreapp2.0\DO.Data.csproj.CoreCompileInputs.cache
+C:\Users\marll\source\repos\DeOnibus\DO.Data\obj\Debug\netcoreapp2.0\DO.Data.AssemblyInfoInputs.cache
+C:\Users\marll\source\repos\DeOnibus\DO.Data\obj\Debug\netcoreapp2.0\DO.Data.AssemblyInfo.cs
+C:\Users\marll\source\repos\DeOnibus\DO.Data\obj\Debug\netcoreapp2.0\DO.Data.dll
+C:\Users\marll\source\repos\DeOnibus\DO.Data\obj\Debug\netcoreapp2.0\DO.Data.pdb

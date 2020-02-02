@@ -1,0 +1,9 @@
+C:\Users\marll\source\repos\DeOnibus\DO.Domain\bin\Debug\netcoreapp2.0\DO.Domain.deps.json
+C:\Users\marll\source\repos\DeOnibus\DO.Domain\bin\Debug\netcoreapp2.0\DO.Domain.dll
+C:\Users\marll\source\repos\DeOnibus\DO.Domain\bin\Debug\netcoreapp2.0\DO.Domain.pdb
+C:\Users\marll\source\repos\DeOnibus\DO.Domain\obj\Debug\netcoreapp2.0\DO.Domain.csprojAssemblyReference.cache
+C:\Users\marll\source\repos\DeOnibus\DO.Domain\obj\Debug\netcoreapp2.0\DO.Domain.csproj.CoreCompileInputs.cache
+C:\Users\marll\source\repos\DeOnibus\DO.Domain\obj\Debug\netcoreapp2.0\DO.Domain.AssemblyInfoInputs.cache
+C:\Users\marll\source\repos\DeOnibus\DO.Domain\obj\Debug\netcoreapp2.0\DO.Domain.AssemblyInfo.cs
+C:\Users\marll\source\repos\DeOnibus\DO.Domain\obj\Debug\netcoreapp2.0\DO.Domain.dll
+C:\Users\marll\source\repos\DeOnibus\DO.Domain\obj\Debug\netcoreapp2.0\DO.Domain.pdb

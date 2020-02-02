@@ -1,9 +1,14 @@
 C:\Users\marll\source\repos\DeOnibus\DO.Business\bin\Debug\netcoreapp2.0\DO.Business.deps.json
 C:\Users\marll\source\repos\DeOnibus\DO.Business\bin\Debug\netcoreapp2.0\DO.Business.dll
 C:\Users\marll\source\repos\DeOnibus\DO.Business\bin\Debug\netcoreapp2.0\DO.Business.pdb
+C:\Users\marll\source\repos\DeOnibus\DO.Business\bin\Debug\netcoreapp2.0\DO.Data.dll
+C:\Users\marll\source\repos\DeOnibus\DO.Business\bin\Debug\netcoreapp2.0\DO.Domain.dll
+C:\Users\marll\source\repos\DeOnibus\DO.Business\bin\Debug\netcoreapp2.0\DO.Data.pdb
+C:\Users\marll\source\repos\DeOnibus\DO.Business\bin\Debug\netcoreapp2.0\DO.Domain.pdb
 C:\Users\marll\source\repos\DeOnibus\DO.Business\obj\Debug\netcoreapp2.0\DO.Business.csprojAssemblyReference.cache
 C:\Users\marll\source\repos\DeOnibus\DO.Business\obj\Debug\netcoreapp2.0\DO.Business.csproj.CoreCompileInputs.cache
 C:\Users\marll\source\repos\DeOnibus\DO.Business\obj\Debug\netcoreapp2.0\DO.Business.AssemblyInfoInputs.cache
 C:\Users\marll\source\repos\DeOnibus\DO.Business\obj\Debug\netcoreapp2.0\DO.Business.AssemblyInfo.cs
+C:\Users\marll\source\repos\DeOnibus\DO.Business\obj\Debug\netcoreapp2.0\DO.Business.csproj.CopyComplete
 C:\Users\marll\source\repos\DeOnibus\DO.Business\obj\Debug\netcoreapp2.0\DO.Business.dll
 C:\Users\marll\source\repos\DeOnibus\DO.Business\obj\Debug\netcoreapp2.0\DO.Business.pdb

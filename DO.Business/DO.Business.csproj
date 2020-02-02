@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Contracts\" />
-    <Folder Include="Business\" />
+    <ProjectReference Include="..\DO.Data\DO.Data.csproj" />
+    <ProjectReference Include="..\DO.Domain\DO.Domain.csproj" />
   </ItemGroup>
 
 </Project>

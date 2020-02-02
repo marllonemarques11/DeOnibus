@@ -14,7 +14,7 @@ namespace DO.Domain.Entities
         public DateTime ArrivalDate { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
-        public float Price { get; set; }
+        public double Price { get; set; }
         public string BussClass { get; set; }
     }
 }

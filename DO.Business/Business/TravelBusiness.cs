@@ -15,7 +15,7 @@ namespace DO.Business.Business
 
         public TravelBusiness(ITravelRepository travelRepository)
         {
-            _travelRepository = _travelRepository;
+            _travelRepository = travelRepository;
         }
 
         public Task<List<Travel>> GetTravels()

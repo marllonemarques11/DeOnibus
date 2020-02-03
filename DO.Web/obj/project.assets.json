@@ -12790,6 +12790,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
       "DO.Business >= 1.0.0",
+      "DO.Domain >= 1.0.0",
       "Microsoft.AspNetCore.All >= 2.0.8",
       "Microsoft.NETCore.App >= 2.0.0"
     ]
@@ -12826,6 +12827,9 @@
           "projectReferences": {
             "C:\\Users\\marll\\source\\repos\\DeOnibus\\DO.Business\\DO.Business.csproj": {
               "projectPath": "C:\\Users\\marll\\source\\repos\\DeOnibus\\DO.Business\\DO.Business.csproj"
+            },
+            "C:\\Users\\marll\\source\\repos\\DeOnibus\\DO.Domain\\DO.Domain.csproj": {
+              "projectPath": "C:\\Users\\marll\\source\\repos\\DeOnibus\\DO.Domain\\DO.Domain.csproj"
             }
           }
         }

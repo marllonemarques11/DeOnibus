@@ -24,6 +24,7 @@
       "DO.Web/1.0.0": {
         "dependencies": {
           "DO.Business": "1.0.0",
+          "DO.Domain": "1.0.0",
           "Microsoft.AspNetCore.All": "2.0.8",
           "Microsoft.NETCore.App": "2.0.0"
         },

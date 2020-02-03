@@ -7,8 +7,8 @@ C:\Users\marll\source\repos\DeOnibus\DO.Web\bin\Debug\netcoreapp2.0\DO.Business.
 C:\Users\marll\source\repos\DeOnibus\DO.Web\bin\Debug\netcoreapp2.0\DO.Data.dll
 C:\Users\marll\source\repos\DeOnibus\DO.Web\bin\Debug\netcoreapp2.0\DO.Domain.dll
 C:\Users\marll\source\repos\DeOnibus\DO.Web\bin\Debug\netcoreapp2.0\DO.Business.pdb
-C:\Users\marll\source\repos\DeOnibus\DO.Web\bin\Debug\netcoreapp2.0\DO.Data.pdb
 C:\Users\marll\source\repos\DeOnibus\DO.Web\bin\Debug\netcoreapp2.0\DO.Domain.pdb
+C:\Users\marll\source\repos\DeOnibus\DO.Web\bin\Debug\netcoreapp2.0\DO.Data.pdb
 C:\Users\marll\source\repos\DeOnibus\DO.Web\obj\Debug\netcoreapp2.0\DO.Web.csprojAssemblyReference.cache
 C:\Users\marll\source\repos\DeOnibus\DO.Web\obj\Debug\netcoreapp2.0\DO.Web.csproj.CoreCompileInputs.cache
 C:\Users\marll\source\repos\DeOnibus\DO.Web\obj\Debug\netcoreapp2.0\DO.Web.AssemblyInfoInputs.cache

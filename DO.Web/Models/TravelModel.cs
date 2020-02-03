@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace DO.Web.Models
 {
-    public class TravelViewModel
+    public class TravelModel
     {
         public string ObjectId { get; set; }
         public string Origin { get; set; }
@@ -14,7 +14,7 @@ namespace DO.Web.Models
         public DateTime ArrivalDate { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
-        public float Price { get; set; }
+        public Double Price { get; set; }
         public string BussClass { get; set; }
     }
 }

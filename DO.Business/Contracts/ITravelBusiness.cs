@@ -10,7 +10,7 @@ namespace DO.Business.Contracts
     public interface ITravelBusiness
     {
         Task<List<Travel>> GetTravels();
-        Task<bool> InsertTravels(DataTable travels);
+        Task<bool> InsertTravels(List<Travel> travels);
         Task<bool> DeleteTravel(string objectId);
     }
 }

@@ -17,8 +17,4 @@
     <ProjectReference Include="..\DO.Domain\DO.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Scripts\" />
-  </ItemGroup>
-
 </Project>

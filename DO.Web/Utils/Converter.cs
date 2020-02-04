@@ -18,11 +18,12 @@ namespace DO.Web.Utils
                 Travel entity = new Travel();
 
                 entity.ObjectId = model.ObjectId;
+                entity.Company = model.Company.Name;
                 entity.Origin = model.Origin;
                 entity.Destination = model.Destination;
-                entity.DepartureDate = model.DepartureDate;
-                entity.ArrivalDate = model.ArrivalDate;
-                entity.BussClass = model.BussClass;
+                entity.DepartureDate = model.DepartureDate.iso;
+                entity.ArrivalDate = model.ArrivalDate.iso;
+                entity.BussClass = model.BusClass;
                 entity.CreatedAt = model.CreatedAt;
                 entity.UpdatedAt = model.UpdatedAt;
                 entity.Price = model.Price;
@@ -31,7 +32,7 @@ namespace DO.Web.Utils
             return entities;
         }
 
-        public List<TravelModel> EntitytoMODEL(List<Travel> entities)
+        public List<TravelModel> EntitytoModel(List<Travel> entities)
         {
             List<TravelModel> models = new List<TravelModel>();
 
@@ -40,11 +41,12 @@ namespace DO.Web.Utils
                 TravelModel model = new TravelModel();
 
                 model.ObjectId = entity.ObjectId;
+                model.Company.Name = entity.Company;
                 model.Origin = entity.Origin;
                 model.Destination = entity.Destination;
-                model.DepartureDate = entity.DepartureDate;
-                model.ArrivalDate = entity.ArrivalDate;
-                model.BussClass = entity.BussClass;
+                model.DepartureDate.iso = entity.DepartureDate;
+                model.ArrivalDate.iso = entity.ArrivalDate;
+                model.BusClass = entity.BussClass;
                 model.CreatedAt = entity.CreatedAt;
                 model.UpdatedAt = entity.UpdatedAt;
                 model.Price = entity.Price;

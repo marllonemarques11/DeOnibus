@@ -8,6 +8,7 @@ namespace DO.Domain.Entities
     {
         public int ID { get; set; }
         public string ObjectId { get; set; }
+        public string Company { get; set; }
         public string Origin { get; set; }
         public string Destination { get; set; }
         public DateTime DepartureDate { get; set; }

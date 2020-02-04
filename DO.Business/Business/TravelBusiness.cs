@@ -19,20 +19,20 @@ namespace DO.Business.Business
             _travelRepository = travelRepository;
         }
 
-        public Task<List<Travel>> GetTravels()
+        public async Task<List<Travel>> GetTravels()
         {
-            return _travelRepository.GetTravels();
+            return await _travelRepository.GetTravels();
         }
 
-        public Task<bool> InsertTravels(List<Travel> travels)
+        public async Task<bool> InsertTravels(List<Travel> travels)
         {
             DataTable travelsDT = ConvertToDataTable(travels);
-            return _travelRepository.InsertTravels(travelsDT);
+            return await _travelRepository.InsertTravels(travelsDT);
         }
 
-        public Task<bool> DeleteTravel(string objectId)
+        public async Task<bool> DeleteTravel(string objectId)
         {
-            return _travelRepository.DeleteTravel(objectId);
+            return await _travelRepository.DeleteTravel(objectId);
         }
 
         public DataTable ConvertToDataTable<T>(IList<T> data)

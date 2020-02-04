@@ -36,7 +36,7 @@ namespace DO.Web.Models
         public DateTime UpdatedAt { get; set; }
 
         [JsonProperty(PropertyName = "Price")]
-        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DisplayFormat(DataFormatString = "{0:c}")]
         public Double Price { get; set; }
 
         [JsonProperty(PropertyName = "BusClass")]

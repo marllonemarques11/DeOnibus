@@ -37,8 +37,6 @@ namespace DO.Web.Controllers
             return View(model);
         }
 
-        //requisições
-
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

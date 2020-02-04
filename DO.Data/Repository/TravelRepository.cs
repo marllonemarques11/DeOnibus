@@ -14,7 +14,7 @@ namespace DO.Data.Repository
         private readonly string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DeOnibusDB;Integrated Security=True";
         private SqlTransaction transaction;
 
-        public Task<List<Travel>> GetTravels()
+        public async Task<List<Travel>> GetTravels()
         {
             string query = @"select * from tbTravel";
             try
@@ -44,7 +44,7 @@ namespace DO.Data.Repository
                     }
                     conn.Close();
                 }
-                return Task.FromResult(travels);
+                return await Task.FromResult(travels);
             }
             catch (SqlException ex)
             {
@@ -52,7 +52,7 @@ namespace DO.Data.Repository
             }
         }
 
-        public Task<bool> InsertTravels(DataTable travels)
+        public async Task<bool> InsertTravels(DataTable travels)
         {
             try
             {
@@ -70,16 +70,16 @@ namespace DO.Data.Repository
 
                     conn.Close();
                 }
-                return Task.FromResult(true);
+                return await Task.FromResult(true);
             }
             catch (SqlException ex)
             {
                 transaction.Rollback();
-                return Task.FromResult(false);
+                return await Task.FromResult(false);
             }
         }
 
-        public Task<bool> DeleteTravel(string objectId)
+        public async Task<bool> DeleteTravel(string objectId)
         {
             string query = @"delete from tbTravel where ObjectId = @ObjectId";
             try
@@ -94,11 +94,11 @@ namespace DO.Data.Repository
                     }
                     conn.Close();
                 }
-                return Task.FromResult(true);
+                return await Task.FromResult(true);
             }
             catch (SqlException ex)
             {
-                return Task.FromResult(false);
+                return await Task.FromResult(false);
             }
         }
     }

@@ -10,7 +10,7 @@ namespace DO.Data.Contracts
     public interface ITravelRepository
     {
         Task<List<Travel>> GetTravels();
-        Task<bool> InsertTravels(DataTable travel);
-        Task<bool> DeleteTravel(string objectId);
+        bool InsertTravels(DataTable travel);
+        Task<bool> DeleteTravels(string objectId);
     }
 }

@@ -24,15 +24,15 @@ namespace DO.Business.Business
             return await _travelRepository.GetTravels();
         }
 
-        public async Task<bool> InsertTravels(List<Travel> travels)
+        public bool InsertTravels(List<Travel> travels)
         {
             DataTable travelsDT = ConvertToDataTable(travels);
-            return await _travelRepository.InsertTravels(travelsDT);
+            return _travelRepository.InsertTravels(travelsDT);
         }
 
-        public async Task<bool> DeleteTravel(string objectId)
+        public async Task<bool> DeleteTravels(string objectsId)
         {
-            return await _travelRepository.DeleteTravel(objectId);
+            return await _travelRepository.DeleteTravels(objectsId);
         }
 
         public DataTable ConvertToDataTable<T>(IList<T> data)

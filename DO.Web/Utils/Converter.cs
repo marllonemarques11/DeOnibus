@@ -17,15 +17,15 @@ namespace DO.Web.Utils
             {
                 Travel entity = new Travel();
 
-                entity.ObjectId = model.ObjectId;
+                entity.ObjectId = model.objectId;
                 entity.Company = model.Company.Name;
                 entity.Origin = model.Origin;
                 entity.Destination = model.Destination;
                 entity.DepartureDate = model.DepartureDate.iso;
                 entity.ArrivalDate = model.ArrivalDate.iso;
                 entity.BussClass = model.BusClass;
-                entity.CreatedAt = model.CreatedAt;
-                entity.UpdatedAt = model.UpdatedAt;
+                entity.CreatedAt = model.createdAt;
+                entity.UpdatedAt = model.updatedAt;
                 entity.Price = model.Price;
                 entities.Add(entity);
             }
@@ -40,15 +40,15 @@ namespace DO.Web.Utils
             {
                 TravelModel model = new TravelModel();
 
-                model.ObjectId = entity.ObjectId;
+                model.objectId = entity.ObjectId;
                 model.Company.Name = entity.Company;
                 model.Origin = entity.Origin;
                 model.Destination = entity.Destination;
                 model.DepartureDate.iso = entity.DepartureDate;
                 model.ArrivalDate.iso = entity.ArrivalDate;
                 model.BusClass = entity.BussClass;
-                model.CreatedAt = entity.CreatedAt;
-                model.UpdatedAt = entity.UpdatedAt;
+                model.createdAt = entity.CreatedAt;
+                model.updatedAt = entity.UpdatedAt;
                 model.Price = entity.Price;
                 models.Add(model);
             }

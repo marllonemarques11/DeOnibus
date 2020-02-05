@@ -52,7 +52,7 @@ namespace DO.Data.Repository
             }
         }
 
-        public async Task<bool> InsertTravels(DataTable travels)
+        public bool InsertTravels(DataTable travels)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace DO.Data.Repository
 
                     transaction = conn.BeginTransaction(IsolationLevel.ReadCommitted);
 
-                    var bc = new SqlBulkCopy(conn)
+                    var bc = new SqlBulkCopy(conn, SqlBulkCopyOptions.Default, transaction)
                     {
                         DestinationTableName = "dbo.tbTravel"
                     };
@@ -70,18 +70,18 @@ namespace DO.Data.Repository
 
                     conn.Close();
                 }
-                return await Task.FromResult(true);
+                return true;
             }
             catch (SqlException ex)
             {
                 transaction.Rollback();
-                return await Task.FromResult(false);
+                return false;
             }
         }
 
-        public async Task<bool> DeleteTravel(string objectId)
+        public async Task<bool> DeleteTravels(string objectsId)
         {
-            string query = @"delete from tbTravel where ObjectId = @ObjectId";
+            string query = @"delete from tbTravel where ObjectId in (@ObjectsId)";
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -89,7 +89,7 @@ namespace DO.Data.Repository
                     conn.Open();
                     using (SqlCommand command = new SqlCommand(query, conn))
                     {
-                        command.Parameters.AddWithValue("@ObjectId", objectId);
+                        command.Parameters.AddWithValue("@ObjectsId", objectsId);
                         command.ExecuteNonQuery();
                     }
                     conn.Close();

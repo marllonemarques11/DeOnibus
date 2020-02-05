@@ -10,7 +10,7 @@ namespace DO.Web.Models
     public class TravelModel
     {
         [JsonProperty(PropertyName = "objectId")]
-        public string ObjectId { get; set; }
+        public string objectId { get; set; }
 
         [JsonProperty(PropertyName = "Company")]
         public CompanyModel Company { get; set; }
@@ -29,14 +29,14 @@ namespace DO.Web.Models
 
         [JsonProperty(PropertyName = "createdAt")]
         [DisplayFormat(DataFormatString = "{MM/dd/yyyy}")]
-        public DateTime CreatedAt { get; set; }
+        public DateTime createdAt { get; set; }
 
         [JsonProperty(PropertyName = "updatedAt")]
         [DisplayFormat(DataFormatString = "{MM/dd/yyyy}")]
-        public DateTime UpdatedAt { get; set; }
+        public DateTime updatedAt { get; set; }
 
         [JsonProperty(PropertyName = "Price")]
-        [DisplayFormat(DataFormatString = "{0:c}")]
+        [DisplayFormat(DataFormatString = "{0:##}")]
         public Double Price { get; set; }
 
         [JsonProperty(PropertyName = "BusClass")]

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DO.Web.Models;
 using DO.Domain.Entities;
+using System.Globalization;
 
 namespace DO.Web.Utils
 {
@@ -21,11 +22,11 @@ namespace DO.Web.Utils
                 entity.Company = model.Company.Name;
                 entity.Origin = model.Origin;
                 entity.Destination = model.Destination;
-                entity.DepartureDate = model.DepartureDate.iso;
-                entity.ArrivalDate = model.ArrivalDate.iso;
+                entity.DepartureDate = DateTime.ParseExact(model.DepartureDate.iso.ToString(), "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                entity.ArrivalDate = DateTime.ParseExact(model.ArrivalDate.iso.ToString(), "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
                 entity.BussClass = model.BusClass;
-                entity.CreatedAt = model.createdAt;
-                entity.UpdatedAt = model.updatedAt;
+                entity.CreatedAt = DateTime.ParseExact(model.createdAt.ToString(), "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                entity.UpdatedAt = DateTime.ParseExact(model.updatedAt.ToString(), "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
                 entity.Price = model.Price;
                 entities.Add(entity);
             }

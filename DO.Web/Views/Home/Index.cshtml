@@ -39,14 +39,15 @@
 
                 @foreach (var travel in Model.TravelsAvailable)
                 {
+                    
                     <tr />
                     <th id="Destination-@travel.objectId" class="text-nowrap" scope="row">@travel.Origin x @travel.Destination</th>
                     <td id="Company-@travel.objectId">@travel.Company.Name</td>
                     <td id="Departure-@travel.objectId">@travel.DepartureDate.iso</td>
                     <td id="Arrival-@travel.objectId">@travel.ArrivalDate.iso</td>
                     <td id="Busclass-@travel.objectId">@travel.BusClass</td>
-                    <td id="Price-@travel.objectId">@Math.Round(travel.Price, 2).ToString("C")</td>
-                    <td id=""> <input id="@travel.objectId" type="checkbox" /> </td>
+                    <td id="Price-@travel.objectId">@travel.Price.ToString("C") </td>
+                    <td> <input id="@travel.objectId" type="checkbox" /> </td>
             }
                 </tbody>
             </table>
@@ -95,7 +96,7 @@
                         }
                         else
                         {
-                            <td>Você não tem passagens favoritas no momento.</td>
+                            <th>Você não possui passagens favoritas no momento.</th>
                         }
 
                         </tbody>
@@ -104,7 +105,7 @@
 
         </div>
 <div class="row">
-    <button type="button" id="btnConfirm" class="btn btn-danger">Confirmar favoritos</button>
+    <button type="button" id="btnConfirm" class="btn btn-danger" style="display:inline-block; float:right;"></button>
 </div>
 
 <link rel="stylesheet" href="~/css/site.css">
@@ -112,7 +113,6 @@
 <script src="~/lib/jquery/dist/jquery.min.js" type="text/javascript"></script>
 
 <script>
-    debugger;
     var travelsAvailable = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.TravelsAvailable))
     var favoriteTravels = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.FavoriteTravels))
     var urlPost = '@Url.Action("InsertTravels", "Home")'

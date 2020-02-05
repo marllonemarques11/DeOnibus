@@ -28,15 +28,12 @@ namespace DO.Web.Models
         public ArrivalDate ArrivalDate { get; set; }
 
         [JsonProperty(PropertyName = "createdAt")]
-        [DisplayFormat(DataFormatString = "{MM/dd/yyyy}")]
         public DateTime createdAt { get; set; }
 
         [JsonProperty(PropertyName = "updatedAt")]
-        [DisplayFormat(DataFormatString = "{MM/dd/yyyy}")]
         public DateTime updatedAt { get; set; }
 
         [JsonProperty(PropertyName = "Price")]
-        [DisplayFormat(DataFormatString = "{0:##}")]
         public Double Price { get; set; }
 
         [JsonProperty(PropertyName = "BusClass")]

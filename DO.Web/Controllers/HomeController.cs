@@ -11,6 +11,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
 using DO.Domain.Entities;
+using System.Globalization;
 
 namespace DO.Web.Controllers
 {
@@ -19,6 +20,7 @@ namespace DO.Web.Controllers
         private ITravelBusiness _travelBusiness;
         HttpClient client = new HttpClient();
         Converter converter = new Converter();
+        Formater formater = new Formater();
 
         public HomeController(ITravelBusiness travelBusiness)
         {
@@ -36,6 +38,8 @@ namespace DO.Web.Controllers
             {
                 var data = await response.Content.ReadAsStringAsync();
                 model.TravelsAvailable = JsonConvert.DeserializeObject<DeOnibusModel>(data).TravelsAvailable.OrderBy(p => p.DepartureDate.iso).ToList();
+
+                formater.RemoveNumbersWithoutSense(model.TravelsAvailable);
             }
             return View(model);
         }

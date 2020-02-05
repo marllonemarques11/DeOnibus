@@ -1,20 +1,23 @@
 ﻿$(document).ready(function () {
+    var tab = '';
+    var confirmFavorite = 'Confirmar Favorito(s)';
+    var deleteFavorite = 'Excluir Favoritos';
+
+    $('#btnConfirm').html(confirmFavorite);
 
     $('.nav-link').click(function () {
-        HideNotSelectedNav($(this).prop('id'));
+        tab = HideNotSelectedNav($(this).prop('id'));
+        $('#btnConfirm').html((tab == 'TravelsForSale') ? confirmFavorite : deleteFavorite);
     });
 
-    VerifyCheckBoxes();
+    EnableFieldsByCheckBoxes(tab);
 
     $('input:checkbox').click(function () {
-        VerifyCheckBoxes();
+        EnableFieldsByCheckBoxes(tab);
     });
 
     $('#btnConfirm').click(function () {
         var arrTravelsChecked = [];
-
-        var tab = ($('#FavoriteTravels').css('display') == 'none' ?
-            $('#TravelsForSale').prop('id') : $('#FavoriteTravels').prop('id'));
 
         $('input:checkbox:checked').each(function () { arrTravelsChecked.push($(this).prop('id')) });
 
@@ -24,7 +27,7 @@
             var travelsToSave = [];
             
             arrTravelsChecked.forEach(id => {
-                debugger;
+                
                 travelsToSave.push(travelsAvailable.find(function (object) { return object.objectId == id }));
             });
             SendTravelsToFavoriteList(travelsToSave);
@@ -44,11 +47,19 @@ function HideNotSelectedNav(selectedNavId) {
         $('#FavoriteTravels').show();
         $('#TravelsForSale').hide();
     }
+
+    tab = ($('#FavoriteTravels').css('display') == 'none' ?
+        $('#TravelsForSale').prop('id') : $('#FavoriteTravels').prop('id'));
+
+    return tab;
 }
 
-function VerifyCheckBoxes() {
+function EnableFieldsByCheckBoxes(tab) {
     $('#btnConfirm').prop('disabled',
         ($('input:checkbox:checked').length == 0) ? true : false);
+    
+    $((tab == 'FavoriteTravels' ? '#first-tab' : '#second-tab')).css('visibility',
+        ($('input:checkbox:checked').length == 0) ? 'visible' : 'hidden');
 }
 
 function SendTravelsToFavoriteList(travels) {
@@ -83,5 +94,5 @@ function ExcludeTravelsFromFavoriteList(objectsId) {
 
 function FindBestPrice() {
 
-    $('[id^="Price-"]')
+    
 }

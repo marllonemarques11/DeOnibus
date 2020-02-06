@@ -80,7 +80,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if (Model.FavoriteTravels != null)
+                        @if (Model.FavoriteTravels.Any())
                         {
                             @foreach (var travel in Model.FavoriteTravels)
                             {
@@ -90,12 +90,13 @@
                                 <td>@travel.DepartureDate.iso</td>
                                 <td>@travel.ArrivalDate.iso</td>
                                 <td>@travel.BusClass</td>
-                                <td>@travel.Price</td>
+                                <td>@travel.Price.ToString("C")</td>
                                 <td> <input id="@travel.objectId" type="checkbox" /> </td>
                             }
                         }
                         else
                         {
+                            <tr />
                             <th>Você não possui passagens favoritas no momento.</th>
                         }
 
@@ -105,7 +106,7 @@
 
         </div>
 <div class="row">
-    <button type="button" id="btnConfirm" class="btn btn-danger" style="display:inline-block; float:right;"></button>
+    <button type="button" id="btnConfirm" class="btn btn-primary" style="display:inline-block; float:right;"></button>
 </div>
 
 <link rel="stylesheet" href="~/css/site.css">
@@ -117,4 +118,5 @@
     var favoriteTravels = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.FavoriteTravels))
     var urlPost = '@Url.Action("InsertTravels", "Home")'
     var urlDelete = '@Url.Action("DeleteTravels", "Home")'
+    var urlIndex = '@Url.Action("Index", "Home")'
 </script>

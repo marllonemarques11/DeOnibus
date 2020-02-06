@@ -14,18 +14,16 @@ namespace DO.Web.Utils
             {
                 if(travel.Price >= 10000)
                 {
-                    travel.Price = travel.Price / 10;
+                    travel.Price = travel.Price / 100;
                 }
-                if (travel.Price >= 1000)
+                else if (travel.Price >= 1000)
                 {
                     travel.Price = travel.Price / 10;
                 }
-
                 if (travel.Price.ToString().Length > 3)
                 {
-
+                    travel.Price = Math.Truncate(travel.Price * 100) / 100;
                 }
-
             }
         }
     }

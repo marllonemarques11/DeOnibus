@@ -95,18 +95,20 @@ namespace DO.Data.Repository
 
         public async Task<bool> DeleteTravels(string objectsId)
         {
-            string query = @"delete from tbTravel where ObjectId in (@ObjectsId)";
+            string query = @"delete from tbTravel where ObjectId in (select * from STRING_SPLIT(@ObjectsId, ','))";
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    conn.Open();
                     using (SqlCommand command = new SqlCommand(query, conn))
                     {
+                        conn.Open();
                         command.Parameters.AddWithValue("@ObjectsId", objectsId);
-                        command.ExecuteNonQuery();
+                        command.CommandText = query;
+                        command.Connection = conn;
+                        int rowsAffected = command.ExecuteNonQuery();
+                        conn.Close();
                     }
-                    conn.Close();
                 }
                 return await Task.FromResult(true);
             }

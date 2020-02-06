@@ -70,7 +70,8 @@ function SendTravelsToFavoriteList(travels) {
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         success: function () {
-            alert('Passagens salvas às suas favoritas.')
+            alert('Passagens salvas às suas favoritas.');
+            window.location.href = urlIndex;
         },
         error: function (err) {
             alert(err);
@@ -84,7 +85,8 @@ function ExcludeTravelsFromFavoriteList(objectsId) {
         url: urlDelete,
         data: { objectsId: objectsId },
         success: function () {
-            alert('Passagens excluidas de suas favoritas.')
+            alert('Passagens excluidas de suas favoritas.');
+            window.location.href = urlIndex;
         },
         error: function (err) {
             alert(err);

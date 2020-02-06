@@ -7,11 +7,7 @@ namespace DO.Domain.Entities
 {
     public class Travel
     {
-        public int ID { get; set; }
-
         public string ObjectId { get; set; }
-
-        public string Company { get; set; }
 
         public string Origin { get; set; }
 
@@ -28,5 +24,7 @@ namespace DO.Domain.Entities
         public double Price { get; set; }
 
         public string BussClass { get; set; }
+
+        public string Company { get; set; }
     }
 }

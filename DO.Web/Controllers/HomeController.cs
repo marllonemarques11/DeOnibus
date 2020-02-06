@@ -38,9 +38,15 @@ namespace DO.Web.Controllers
             {
                 var data = await response.Content.ReadAsStringAsync();
                 model.TravelsAvailable = JsonConvert.DeserializeObject<DeOnibusModel>(data).TravelsAvailable.OrderBy(p => p.DepartureDate.iso).ToList();
-
                 formater.RemoveNumbersWithoutSense(model.TravelsAvailable);
             }
+
+            var favoriteTravels = await _travelBusiness.GetTravels();
+            model.FavoriteTravels = favoriteTravels.Any() ? converter.EntitytoModel(favoriteTravels) : new List<TravelModel>();
+            formater.RemoveNumbersWithoutSense(model.FavoriteTravels);
+
+            MergeTravels(model);
+
             return View(model);
         }
 
@@ -49,16 +55,15 @@ namespace DO.Web.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public async Task<List<TravelModel>> GetTravels()
+        public void MergeTravels(DeOnibusModel model)
         {
-            List<Travel> travelsEntity = await _travelBusiness.GetTravels();
-            return converter.EntitytoModel(travelsEntity);
+            model.TravelsAvailable = model.TravelsAvailable.Except(model.FavoriteTravels).ToList();  //acertar
         }
 
-        public bool InsertTravels([FromBody]List<TravelModel> travelsModel)
+        public async Task<bool> InsertTravels([FromBody]List<TravelModel> travelsModel)
         {
             List<Travel> travelsEntity = converter.ModeltoEntity(travelsModel);
-            return _travelBusiness.InsertTravels(travelsEntity);
+            return await _travelBusiness.InsertTravels(travelsEntity);
         }
 
         public async Task<bool> DeleteTravels(string objectsId)

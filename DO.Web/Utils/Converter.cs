@@ -22,11 +22,11 @@ namespace DO.Web.Utils
                 entity.Company = model.Company.Name;
                 entity.Origin = model.Origin;
                 entity.Destination = model.Destination;
-                entity.DepartureDate = DateTime.ParseExact(model.DepartureDate.iso.ToString(), "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
-                entity.ArrivalDate = DateTime.ParseExact(model.ArrivalDate.iso.ToString(), "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                entity.DepartureDate = DateTime.ParseExact(model.DepartureDate.iso.ToString().Replace("/", "-"), "dd-MM-yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                entity.ArrivalDate = DateTime.ParseExact(model.ArrivalDate.iso.ToString().Replace("/", "-"), "dd-MM-yyyy HH:mm:ss", CultureInfo.InvariantCulture);
                 entity.BussClass = model.BusClass;
-                entity.CreatedAt = DateTime.ParseExact(model.createdAt.ToString(), "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
-                entity.UpdatedAt = DateTime.ParseExact(model.updatedAt.ToString(), "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                entity.CreatedAt = DateTime.ParseExact(model.createdAt.ToString().Replace("/", "-"), "dd-MM-yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                entity.UpdatedAt = DateTime.ParseExact(model.updatedAt.ToString().Replace("/", "-"), "dd-MM-yyyy HH:mm:ss", CultureInfo.InvariantCulture);
                 entity.Price = model.Price;
                 entities.Add(entity);
             }
@@ -40,6 +40,9 @@ namespace DO.Web.Utils
             foreach (var entity in entities)
             {
                 TravelModel model = new TravelModel();
+                model.Company = new CompanyModel();
+                model.DepartureDate = new DepartureDateModel();
+                model.ArrivalDate = new ArrivalDate();
 
                 model.objectId = entity.ObjectId;
                 model.Company.Name = entity.Company;

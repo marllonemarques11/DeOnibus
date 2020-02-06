@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace DO.Data.Repository
 {
@@ -39,6 +40,7 @@ namespace DO.Data.Repository
                             travel.UpdatedAt = Convert.ToDateTime(reader["UpdatedAt"]);
                             travel.Price = Convert.ToDouble(reader["Price"]);
                             travel.BussClass = Convert.ToString(reader["BussClass"]);
+                            travel.Company = Convert.ToString(reader["Company"]);
                             travels.Add(travel);
                         }
                     }
@@ -52,7 +54,7 @@ namespace DO.Data.Repository
             }
         }
 
-        public bool InsertTravels(DataTable travels)
+        public async Task<bool> InsertTravels(DataTable travels)
         {
             try
             {
@@ -62,20 +64,32 @@ namespace DO.Data.Repository
 
                     transaction = conn.BeginTransaction(IsolationLevel.ReadCommitted);
 
-                    var bc = new SqlBulkCopy(conn, SqlBulkCopyOptions.Default, transaction)
-                    {
-                        DestinationTableName = "dbo.tbTravel"
-                    };
+                    var bc = new SqlBulkCopy(conn, SqlBulkCopyOptions.FireTriggers, transaction);
+
+                    bc.DestinationTableName = "dbo.tbTravel";
+                    bc.ColumnMappings.Add("ObjectId", "ObjectId");
+                    bc.ColumnMappings.Add("Origin", "Origin");
+                    bc.ColumnMappings.Add("Destination", "Destination");
+                    bc.ColumnMappings.Add("DepartureDate", "DepartureDate");
+                    bc.ColumnMappings.Add("ArrivalDate", "ArrivalDate");
+                    bc.ColumnMappings.Add("CreatedAt", "CreatedAt");
+                    bc.ColumnMappings.Add("UpdatedAt", "UpdatedAt");
+                    bc.ColumnMappings.Add("Price", "Price");
+                    bc.ColumnMappings.Add("BussClass", "BussClass");
+                    bc.ColumnMappings.Add("Company", "Company");
+
                     bc.WriteToServer(travels);
+
+                    transaction.Commit();
 
                     conn.Close();
                 }
-                return true;
+                return await Task.FromResult(true);
             }
             catch (SqlException ex)
             {
                 transaction.Rollback();
-                return false;
+                return await Task.FromResult(false);
             }
         }
 

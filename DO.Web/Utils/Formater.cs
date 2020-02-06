@@ -20,6 +20,12 @@ namespace DO.Web.Utils
                 {
                     travel.Price = travel.Price / 10;
                 }
+
+                if (travel.Price.ToString().Length > 3)
+                {
+
+                }
+
             }
         }
     }

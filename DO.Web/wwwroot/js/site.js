@@ -1,4 +1,7 @@
 ﻿$(document).ready(function () {
+    $('#TravelsForSale').show();
+    $('#FavoriteTravels').hide();
+
     var tab = '';
     var confirmFavorite = 'Confirmar Favorito(s)';
     var deleteFavorite = 'Excluir Favoritos';
@@ -92,9 +95,4 @@ function ExcludeTravelsFromFavoriteList(objectsId) {
             alert(err);
         }
     })
-}
-
-function FindBestPrice() {
-
-    
 }

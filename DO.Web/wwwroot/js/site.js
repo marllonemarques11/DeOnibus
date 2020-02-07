@@ -11,6 +11,9 @@
     $('.nav-link').click(function () {
         tab = HideNotSelectedNav($(this).prop('id'));
         $('#btnConfirm').html((tab == 'TravelsForSale') ? confirmFavorite : deleteFavorite);
+
+        $('#drpDeparturePeriod, #drpBusClass, #txtLimitPrice, #btnFilter').css('visibility',
+            (tab == 'TravelsForSale') ? 'visible' : 'hidden');
     });
 
     EnableFieldsByCheckBoxes(tab);
@@ -40,9 +43,29 @@
     });
 
     $('#btnFilter').click(function () {
-        var period = $('#drpDeparturePeriod option:selected').text();
-        var busClass = $('#drpBusClass option:selected').text();
+        var period = ($('#drpDeparturePeriod option:selected').text() != 'embarque' ?
+            $('#drpDeparturePeriod option:selected').text() : '');
+
+        var busClass = ($('#drpBusClass option:selected').text() != 'classes disponíveis' ?
+            $('#drpBusClass option:selected').text() : '');
+
         var limitPrice = $('#txtLimitPrice').val();
+
+        switch (period) {
+            case 'madrugada':
+                period = '00:00, 05:59'
+                break;
+            case 'manhã':
+                period = '06:00, 11:59'
+                break;
+            case 'tarde':
+                period = '12:00, 17:59'
+                break;
+            case 'madrugada':
+                period = '18:00, 23:59'
+                break;
+            default:
+        }
 
         Filter(period, busClass, limitPrice);
     });
@@ -68,7 +91,8 @@ function EnableFieldsByCheckBoxes(tab) {
     $('#btnConfirm').prop('disabled',
         ($('input:checkbox:checked').length == 0) ? true : false);
     
-    $((tab == 'FavoriteTravels' ? '#first-tab' : '#second-tab')).css('visibility',
+    $((tab == 'FavoriteTravels' ? '#first-tab, ' : '#second-tab, ')
+        +'#drpDeparturePeriod, #drpBusClass, #txtLimitPrice, #btnFilter').css('visibility',
         ($('input:checkbox:checked').length == 0) ? 'visible' : 'hidden');
 }
 
@@ -109,8 +133,9 @@ function Filter(period, busClass, priceLimit) {
         method: 'GET',
         url: urlIndex,
         data: { period: period, busClass: busClass, priceLimit: priceLimit },
-        success: function () {
-            window.location.reload();
+        success: function (data) {
+            var teste = $('#tbodyTravelsAvailable', data).html();
+            $('#tbodyTravelsAvailable').html(teste);
         },
         error: function (err) {
             err

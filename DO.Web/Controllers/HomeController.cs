@@ -30,10 +30,11 @@ namespace DO.Web.Controllers
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string period, string busClass, string priceLimit)
         {
             DeOnibusModel model = new DeOnibusModel();
             model.TravelsAvailable = await GetTravelsAPI();
+            model.TravelsAvailable = await Filter(model.TravelsAvailable, period, busClass, priceLimit);
 
             var favoriteTravels = await _travelBusiness.GetTravels();
             model.FavoriteTravels = favoriteTravels.Any() ? converter.EntitytoModel(favoriteTravels) : new List<TravelModel>();
@@ -79,32 +80,23 @@ namespace DO.Web.Controllers
             return await Task.FromResult(travels);
         }
 
-        //public async Task<IActionResult> Filter(string period, string busClass, string priceLimit)
-        //{
-        //    DeOnibusModel model = new DeOnibusModel();
+        public async Task<List<TravelModel>> Filter(List<TravelModel> travels, string period, string busClass, string priceLimit)
+        {
+            if (!string.IsNullOrWhiteSpace(busClass))
+                travels = travels.Where(obj => obj.BusClass == busClass).ToList();
 
-        //    string[] rangeHours = period.Split(',');
+            if (!string.IsNullOrWhiteSpace(priceLimit))
+                travels = travels.Where(obj => obj.Price <= Convert.ToInt32(priceLimit)).ToList();
 
-        //    var travels = await GetTravelsAPI();
+            if (!string.IsNullOrWhiteSpace(period))
+            {
+                string[] rangeHours = period.Split(',');
+                TimeSpan startHour = TimeSpan.Parse(rangeHours[0]);
+                TimeSpan endHour = TimeSpan.Parse(rangeHours[1]);
+                travels = travels.Where(obj => obj.DepartureDate.iso.TimeOfDay >= startHour && obj.DepartureDate.iso.TimeOfDay <= endHour).ToList();
+            }
 
-        //    if (!string.IsNullOrWhiteSpace(busClass))
-        //        travels.Where(obj => obj.BusClass == busClass).ToList();
-
-        //    if (!string.IsNullOrWhiteSpace(priceLimit))
-        //        travels.Where(obj => obj.Price <= Convert.ToInt32(priceLimit));
-
-        //    if (!string.IsNullOrWhiteSpace(period))
-        //    {
-        //        DateTime startHour = Convert.ToDateTime(rangeHours[0]);
-        //        DateTime endHour = Convert.ToDateTime(rangeHours[1]);
-        //        travels.Where(obj => obj.DepartureDate.iso >= startHour && obj.DepartureDate.iso <= endHour);
-        //    }
-
-        //    model.FavoriteTravels = converter.EntitytoModel(await _travelBusiness.GetTravels());
-
-        //    MergeTravels(model);
-
-        //    return View(model);
-        //}
+            return travels;
+        }
     }
 }

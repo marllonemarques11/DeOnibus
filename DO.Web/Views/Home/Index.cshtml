@@ -34,23 +34,29 @@
                     </th>
                 </tr>
             </thead>
-            <tbody>
-
-                @foreach (var travel in Model.TravelsAvailable)
+            <tbody id="tbodyTravelsAvailable">
+                @if (Model.TravelsAvailable.Any())
+                {
+                    @foreach (var travel in Model.TravelsAvailable)
+                    {
+                        <tr />
+                        <th id="Destination-@travel.objectId" class="text-nowrap" scope="row">@travel.Origin x @travel.Destination</th>
+                        <td id="Company-@travel.objectId">@travel.Company.Name</td>
+                        <td id="Departure-@travel.objectId">@travel.DepartureDate.iso</td>
+                        <td id="Arrival-@travel.objectId">@travel.ArrivalDate.iso</td>
+                        <td id="Busclass-@travel.objectId">@travel.BusClass</td>
+                        <td id="Price-@travel.objectId">@travel.Price.ToString("C") </td>
+                        <td> <input id="@travel.objectId" type="checkbox" /> </td>
+                    }
+                }
+                else
                 {
                     <tr />
-                    <th id="Destination-@travel.objectId" class="text-nowrap" scope="row">@travel.Origin x @travel.Destination</th>
-                    <td id="Company-@travel.objectId">@travel.Company.Name</td>
-                    <td id="Departure-@travel.objectId">@travel.DepartureDate.iso</td>
-                    <td id="Arrival-@travel.objectId">@travel.ArrivalDate.iso</td>
-                    <td id="Busclass-@travel.objectId">@travel.BusClass</td>
-                    <td id="Price-@travel.objectId">@travel.Price.ToString("C") </td>
-                    <td> <input id="@travel.objectId" type="checkbox" /> </td>
+                    <th class="text-nowrap" scope="row">Nenhum item corresponde aos filtros</th>
                 }
                 </tbody>
             </table>
         </div>
-
 
     </div>
     <div class="tab-content" id="FavoriteTravels">
@@ -78,7 +84,7 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tbodyFavoritTravels">
                     @if (Model.FavoriteTravels.Any())
                     {
                         @foreach (var travel in Model.FavoriteTravels)
@@ -108,7 +114,7 @@
 
         <div id="drpDeparturePeriod" class="col-sm-3" style="display:inline-block; float:left;">
             <select class="form-control">
-                <option selected="selected">embarque</option>
+                <option selected="selected" style="display:none">embarque</option>
                 <option value="1">madrugada</option>
                 <option value="2">manhã</option>
                 <option value="3">tarde</option>
@@ -117,14 +123,14 @@
         </div>
         <div id="drpBusClass" class="col-sm-3" style="display:inline-block; float:left;">
             <select class="form-control">
-                <option selected="selected">classes disponíveis</option>
+                <option selected="selected" style="display:none">classes disponíveis</option>
                 @foreach (var travel in Model.TravelsAvailable.GroupBy(obj => obj.BusClass).Select(obj2 => obj2.First()).ToList())
                 {
                     <option value="@travel.objectId">@travel.BusClass</option>
                 }
             </select>
         </div>
-        <input id="txtLimitPrice" type="text" placeholder="preço limite" style="display:inline-block; float:left;" />
+        <input id="txtLimitPrice" type="number" min="0" placeholder="preço limite" style="display:inline-block; float:left;" />
         <button type="button" id="btnFilter" class="btn btn-primary" style="display:inline-block; float:left;">Filtrar</button>
         <button type="button" id="btnConfirm" class="btn btn-primary" style="display:inline-block; float:right;"></button>
     </div>
@@ -139,5 +145,4 @@
             var urlPost = '@Url.Action("InsertTravels", "Home")'
             var urlDelete = '@Url.Action("DeleteTravels", "Home")'
             var urlIndex = '@Url.Action("Index", "Home")'
-            var urlFilter = '@Url.Action("Filter", "Home")'
         </script>

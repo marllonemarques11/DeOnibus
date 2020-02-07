@@ -30,7 +30,6 @@
             var travelsToSave = [];
             
             arrTravelsChecked.forEach(id => {
-                
                 travelsToSave.push(travelsAvailable.find(function (object) { return object.objectId == id }));
             });
             SendTravelsToFavoriteList(travelsToSave);
@@ -38,6 +37,14 @@
         else {
             ExcludeTravelsFromFavoriteList(ids);
         }
+    });
+
+    $('#btnFilter').click(function () {
+        var period = $('#drpDeparturePeriod option:selected').text();
+        var busClass = $('#drpBusClass option:selected').text();
+        var limitPrice = $('#txtLimitPrice').val();
+
+        Filter(period, busClass, limitPrice);
     });
 });
 
@@ -67,9 +74,9 @@ function EnableFieldsByCheckBoxes(tab) {
 
 function SendTravelsToFavoriteList(travels) {
     $.ajax({
-        method: "POST",
+        method: 'POST',
         url: urlPost,
-        data: JSON.stringify( travels ),
+        data: JSON.stringify(travels),
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         success: function () {
@@ -79,12 +86,12 @@ function SendTravelsToFavoriteList(travels) {
         error: function (err) {
             alert(err);
         }
-    })
+    });
 }
 
 function ExcludeTravelsFromFavoriteList(objectsId) {
     $.ajax({
-        method: "POST",
+        method: 'DELETE',
         url: urlDelete,
         data: { objectsId: objectsId },
         success: function () {
@@ -94,5 +101,19 @@ function ExcludeTravelsFromFavoriteList(objectsId) {
         error: function (err) {
             alert(err);
         }
-    })
+    });
+}
+
+function Filter(period, busClass, priceLimit) {
+    $.ajax({
+        method: 'GET',
+        url: urlIndex,
+        data: { period: period, busClass: busClass, priceLimit: priceLimit },
+        success: function () {
+            window.location.reload();
+        },
+        error: function (err) {
+            err
+        }
+    });
 }

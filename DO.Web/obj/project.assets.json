@@ -2,6 +2,9 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.0": {
+      "jQuery.InputMask/5.0.2": {
+        "type": "package"
+      },
       "Libuv/1.10.0": {
         "type": "package",
         "dependencies": {
@@ -4802,6 +4805,22 @@
     }
   },
   "libraries": {
+    "jQuery.InputMask/5.0.2": {
+      "sha512": "kqXgyV8urLjV+GbOrdQklADKr2qfXI3IQskqhd3YnGzxT9SWG8QBrAX9VnltoTVFCbU0Sqde6w49LAIiA+ngnA==",
+      "type": "package",
+      "path": "jquery.inputmask/5.0.2",
+      "files": [
+        ".signature.p7s",
+        "Readme.txt",
+        "content/Scripts/inputmask/bindings/inputmask.binding.js",
+        "content/Scripts/inputmask/inputmask.js",
+        "content/Scripts/inputmask/inputmask.min.js",
+        "content/Scripts/inputmask/jquery.inputmask.js",
+        "content/Scripts/inputmask/jquery.inputmask.min.js",
+        "jquery.inputmask.5.0.2.nupkg.sha512",
+        "jquery.inputmask.nuspec"
+      ]
+    },
     "Libuv/1.10.0": {
       "sha512": "GsCf4q+eyaI49rCPlgYxdxa1SQCysXFFdSJWdstrwxytg4+VPYLYrXD4AT2rjHVJ+UF7SSWX9CapWEYaU4ejVQ==",
       "type": "package",
@@ -12792,7 +12811,8 @@
       "DO.Business >= 1.0.0",
       "DO.Domain >= 1.0.0",
       "Microsoft.AspNetCore.All >= 2.0.8",
-      "Microsoft.NETCore.App >= 2.0.0"
+      "Microsoft.NETCore.App >= 2.0.0",
+      "jQuery.InputMask >= 5.0.2"
     ]
   },
   "packageFolders": {
@@ -12851,6 +12871,10 @@
             "target": "Package",
             "version": "[2.0.0, )",
             "autoReferenced": true
+          },
+          "jQuery.InputMask": {
+            "target": "Package",
+            "version": "[5.0.2, )"
           }
         },
         "imports": [

@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "11f3af380c35b70c1dae41eb2e82761b929e972e"
+    "signature": "2c31b9d1bceb196f22b0d712bd782b5136b6dd40"
   },
   "compilationOptions": {
     "defines": [
@@ -26,7 +26,8 @@
           "DO.Business": "1.0.0",
           "DO.Domain": "1.0.0",
           "Microsoft.AspNetCore.All": "2.0.8",
-          "Microsoft.NETCore.App": "2.0.0"
+          "Microsoft.NETCore.App": "2.0.0",
+          "jQuery.InputMask": "5.0.2"
         },
         "runtime": {
           "DO.Web.dll": {}
@@ -35,6 +36,7 @@
           "DO.Web.dll": {}
         }
       },
+      "jQuery.InputMask/5.0.2": {},
       "Libuv/1.10.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0"
@@ -4037,6 +4039,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "jQuery.InputMask/5.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kqXgyV8urLjV+GbOrdQklADKr2qfXI3IQskqhd3YnGzxT9SWG8QBrAX9VnltoTVFCbU0Sqde6w49LAIiA+ngnA==",
+      "path": "jquery.inputmask/5.0.2",
+      "hashPath": "jquery.inputmask.5.0.2.nupkg.sha512"
     },
     "Libuv/1.10.0": {
       "type": "package",

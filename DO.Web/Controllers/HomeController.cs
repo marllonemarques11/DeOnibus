@@ -33,12 +33,7 @@ namespace DO.Web.Controllers
         public async Task<IActionResult> Index()
         {
             DeOnibusModel model = new DeOnibusModel();
-            HttpResponseMessage response = await client.GetAsync("stage-v0/route");
-            if (response.IsSuccessStatusCode)
-            {
-                var data = await response.Content.ReadAsStringAsync();
-                model.TravelsAvailable = JsonConvert.DeserializeObject<DeOnibusModel>(data).TravelsAvailable.OrderBy(p => p.DepartureDate.iso).ToList();
-            }
+            model.TravelsAvailable = await GetTravelsAPI();
 
             var favoriteTravels = await _travelBusiness.GetTravels();
             model.FavoriteTravels = favoriteTravels.Any() ? converter.EntitytoModel(favoriteTravels) : new List<TravelModel>();
@@ -71,5 +66,45 @@ namespace DO.Web.Controllers
         {
             return await _travelBusiness.DeleteTravels(objectsId);
         }
+
+        public async Task<List<TravelModel>> GetTravelsAPI()
+        {
+            List<TravelModel> travels = new List<TravelModel>();
+            HttpResponseMessage response = await client.GetAsync("stage-v0/route");
+            if (response.IsSuccessStatusCode)
+            {
+                var data = await response.Content.ReadAsStringAsync();
+                travels = JsonConvert.DeserializeObject<DeOnibusModel>(data).TravelsAvailable.OrderBy(p => p.DepartureDate.iso).ToList();
+            }
+            return await Task.FromResult(travels);
+        }
+
+        //public async Task<IActionResult> Filter(string period, string busClass, string priceLimit)
+        //{
+        //    DeOnibusModel model = new DeOnibusModel();
+
+        //    string[] rangeHours = period.Split(',');
+
+        //    var travels = await GetTravelsAPI();
+
+        //    if (!string.IsNullOrWhiteSpace(busClass))
+        //        travels.Where(obj => obj.BusClass == busClass).ToList();
+
+        //    if (!string.IsNullOrWhiteSpace(priceLimit))
+        //        travels.Where(obj => obj.Price <= Convert.ToInt32(priceLimit));
+
+        //    if (!string.IsNullOrWhiteSpace(period))
+        //    {
+        //        DateTime startHour = Convert.ToDateTime(rangeHours[0]);
+        //        DateTime endHour = Convert.ToDateTime(rangeHours[1]);
+        //        travels.Where(obj => obj.DepartureDate.iso >= startHour && obj.DepartureDate.iso <= endHour);
+        //    }
+
+        //    model.FavoriteTravels = converter.EntitytoModel(await _travelBusiness.GetTravels());
+
+        //    MergeTravels(model);
+
+        //    return View(model);
+        //}
     }
 }

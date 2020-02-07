@@ -61,13 +61,19 @@
             case 'tarde':
                 period = '12:00, 17:59'
                 break;
-            case 'madrugada':
+            case 'noite':
                 period = '18:00, 23:59'
                 break;
             default:
         }
 
         Filter(period, busClass, limitPrice);
+    });
+    $('body').on('click', '#tbodyTravelsAvailable', function () {
+        EnableFieldsByCheckBoxes(tab);
+        $('input:checkbox').click(function () {
+            EnableFieldsByCheckBoxes(tab);
+        });
     });
 });
 
@@ -94,6 +100,10 @@ function EnableFieldsByCheckBoxes(tab) {
     $((tab == 'FavoriteTravels' ? '#first-tab, ' : '#second-tab, ')
         +'#drpDeparturePeriod, #drpBusClass, #txtLimitPrice, #btnFilter').css('visibility',
         ($('input:checkbox:checked').length == 0) ? 'visible' : 'hidden');
+
+    if (tab == 'FavoriteTravels') {
+        $('#drpDeparturePeriod, #drpBusClass, #txtLimitPrice, #btnFilter').css('visibility', 'hidden');
+    }
 }
 
 function SendTravelsToFavoriteList(travels) {

@@ -3,14 +3,14 @@
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
-        <a class="nav-link active" id="first-tab" data-toggle="tab" href="#first" role="tab" aria-controls="first" aria-selected="true">Passagens à Venda</a>
+        <a class="active nav-link active" id="first-tab" data-toggle="tab" href="#first" role="tab" aria-controls="first" aria-selected="true">Passagens à Venda</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" id="second-tab" data-toggle="tab" href="#second" role="tab" aria-controls="second" aria-selected="false">Passagens favoritas</a>
     </li>
 </ul>
 <div class="tab-content" id="TravelsForSale">
-    <div class="tab-pane fade show active" id="first" role="tabpanel" aria-labelledby="first-tab">
+    <div class="tab-pane active" id="first" role="tabpanel" aria-labelledby="first-tab">
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
@@ -46,7 +46,7 @@
                         <td id="Arrival-@travel.objectId">@travel.ArrivalDate.iso</td>
                         <td id="Busclass-@travel.objectId">@travel.BusClass</td>
                         <td id="Price-@travel.objectId">@travel.Price.ToString("C") </td>
-                        <td> <input id="@travel.objectId" type="checkbox" /> </td>
+                        <td> <input id="first-check-@travel.objectId" type="checkbox" /> </td>
                     }
                 }
                 else
@@ -96,7 +96,7 @@
                             <td>@travel.ArrivalDate.iso</td>
                             <td>@travel.BusClass</td>
                             <td>@travel.Price.ToString("C")</td>
-                            <td> <input id="@travel.objectId" type="checkbox" /> </td>
+                            <td> <input id="second-check-@travel.objectId" type="checkbox" /> </td>
                         }
                     }
                     else

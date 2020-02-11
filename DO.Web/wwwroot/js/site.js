@@ -23,7 +23,6 @@
     }); 
 
     $('#btnPost').click(function () {
-        debugger;
         var arrTravelsChecked = [];
 
         $('input:checkbox:checked').each(function () { arrTravelsChecked.push($(this).prop('id')) });

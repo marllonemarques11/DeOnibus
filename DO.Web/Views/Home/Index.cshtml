@@ -46,7 +46,7 @@
                         <td id="Arrival-@travel.objectId">@travel.ArrivalDate.iso</td>
                         <td id="Busclass-@travel.objectId">@travel.BusClass</td>
                         <td id="Price-@travel.objectId">@travel.Price.ToString("C") </td>
-                        <td> <input id="first-check-@travel.objectId" type="checkbox" /> </td>
+                        <td> <input id="@travel.objectId" type="checkbox" /> </td>
                     }
                 }
                 else
@@ -132,7 +132,7 @@
         </div>
         <input id="txtLimitPrice" type="number" min="0" placeholder="preço limite" style="display:inline-block; float:left;" />
         <button type="button" id="btnFilter" class="btn btn-primary" style="display:inline-block; float:left;">Filtrar</button>
-        <button type="button" id="btnConfirm" class="btn btn-primary" style="display:inline-block; float:right;"></button>
+        <button type="button" id="btnPost" class="btn btn-primary" style="display:inline-block; float:right;"></button>
     </div>
 
         <link rel="stylesheet" href="~/css/site.css">

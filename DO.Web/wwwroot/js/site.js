@@ -2,15 +2,15 @@
     $('#TravelsForSale').show();
     $('#FavoriteTravels').hide();
 
-    var tab = '';
+    var tab = 'TravelsForSale';
     var confirmFavorite = 'Confirmar Favorito(s)';
     var deleteFavorite = 'Excluir Favoritos';
 
-    $('#btnConfirm').html(confirmFavorite);
+    $('#btnPost').html(confirmFavorite);
 
     $('.nav-link').click(function () {
         tab = HideNotSelectedNav($(this).prop('id'));
-        $('#btnConfirm').html((tab == 'TravelsForSale') ? confirmFavorite : deleteFavorite);
+        $('#btnPost').html((tab == 'TravelsForSale') ? confirmFavorite : deleteFavorite);
 
         $('#drpDeparturePeriod, #drpBusClass, #txtLimitPrice, #btnFilter').css('visibility',
             (tab == 'TravelsForSale') ? 'visible' : 'hidden');
@@ -20,9 +20,10 @@
 
     $('input:checkbox').click(function () {
         EnableFieldsByCheckBoxes(tab);
-    });
+    }); 
 
-    $('#btnConfirm').click(function () {
+    $('#btnPost').click(function () {
+        debugger;
         var arrTravelsChecked = [];
 
         $('input:checkbox:checked').each(function () { arrTravelsChecked.push($(this).prop('id')) });
@@ -94,7 +95,7 @@ function HideNotSelectedNav(selectedNavId) {
 }
 
 function EnableFieldsByCheckBoxes(tab) {
-    $('#btnConfirm').prop('disabled',
+    $('#btnPost').prop('disabled',
         ($('input:checkbox:checked').length == 0) ? true : false);
     
     $((tab == 'FavoriteTravels' ? '#first-tab, ' : '#second-tab, ')
@@ -144,8 +145,8 @@ function Filter(period, busClass, priceLimit) {
         url: urlIndex,
         data: { period: period, busClass: busClass, priceLimit: priceLimit },
         success: function (data) {
-            var teste = $('#tbodyTravelsAvailable', data).html();
-            $('#tbodyTravelsAvailable').html(teste);
+            var grid = $('#tbodyTravelsAvailable', data).html();
+            $('#tbodyTravelsAvailable').html(grid);
         },
         error: function (err) {
             err
